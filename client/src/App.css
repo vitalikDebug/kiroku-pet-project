@@ -1,0 +1,13 @@
+body {
+  background-color: #121419;
+
+}
+
+.kiroku {
+  /* font-family: "Inter", sans-serif; */
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 100;
+  color: #DBE6FF;
+  font-size: 80px;
+  /* text-transform: uppercase; */
+}

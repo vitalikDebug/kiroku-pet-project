@@ -1,0 +1,152 @@
+@use '../../assets/styles/variables';
+@use '../../assets/styles/mixins';
+
+@mixin button-mixin {
+    color: #DBE6FF;
+    transition: all .25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+}
+
+
+.navbar {
+    display: flex;
+    margin: 0 auto;
+    width: variables.$page-width;
+    height: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+
+    .navbar__icons {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+}
+
+
+
+.hero {
+
+    // height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    overflow: hidden;
+    .main {
+        display: grid;
+        justify-content: space-between;
+        align-content: center;
+        gap: 100px;
+        grid-template-columns: 450px 1fr;
+        width: 1300px;
+        margin: 0 auto;
+        z-index: 1;
+        padding-top: 100px;
+        height: 100%;
+
+        .main__left {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            gap: 15px;
+
+            .main__left-banner {
+                width: 250px;
+                padding: 10px;
+                text-align: center;
+                color: variables.$test-color;
+                font-family: variables.$font-Inter;
+                background: linear-gradient(#121419, #121419) padding-box, linear-gradient(to right, #FF424D, #1847B1) border-box;
+                border-radius: 10px;
+                border: 1px solid transparent;
+            }
+
+            h1 {
+                font-weight: 700;
+                font-family: variables.$font-IBM;
+                font-size: 80px;
+                color: variables.$test-color;
+                margin: 8px 0;
+            }
+
+            .main__left-description {
+                font-family: variables.$font-Inter;
+                font-size: 16px;
+                color: variables.$test-color;
+                line-height: 1.75;
+            }
+
+            .button {
+                @include button-mixin;
+            }
+
+            .button-start {
+                border: 1px solid #1F2635;
+                height: 54px;
+                max-width: 162px;
+
+                .button-arrow {
+                    transform: rotate(180deg);
+                    margin-right: 10px;
+                }
+            }
+
+            .button-start:hover {
+                border: 1px solid #3C4558;
+
+            }
+
+
+        }
+
+        .main__right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 500px;
+            transform: translate(100px);
+
+
+            .main__right-cards {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 16px;
+                width: 1200px;
+                height: 450px;
+
+                .main__right-cardAnime {
+                    min-width: 300px;
+                    height: 200px;
+                    position: relative;
+                    display: inline-flex;
+                    padding: 8px;
+                    align-items: flex-start;
+                    gap: 16px;
+                    background: linear-gradient(#121419, #121419) padding-box, linear-gradient(to left, rgba(24, 71, 177, .2), rgba(161, 196, 247, .2)) border-box;
+                    border: 1px solid transparent;
+                    border-radius: 10px;
+                    -webkit-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    transition: all .25s ease;
+                    overflow: hidden;
+                }
+
+                .main__right-cardAnime:nth-child(4) {
+                    margin-left: 32px;
+                }
+
+            }
+        }
+    }
+
+}

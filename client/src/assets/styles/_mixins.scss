@@ -1,0 +1,12 @@
+
+
+@mixin button-mixin {
+    color: #DBE6FF;
+    transition: all .25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+}
