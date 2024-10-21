@@ -1,6 +1,16 @@
+import { Await, useLoaderData } from "react-router-dom";
+import Cards from "../cards/cards";
 import NavBar from "../navBar/navBar";
+import {Suspense, useState} from "react"
 
 const Header = () => {
+
+  const [titles, setTitles] = useState([])
+  const data = useLoaderData()
+  console.log(data)
+
+
+
   return (
     <header>
       <NavBar />
@@ -39,30 +49,14 @@ const Header = () => {
           </a>
         </div>
         <div className="main__right">
-          {/* <div className="main__right-request"> */}
-            <div className="main__right-cards">
-                <a href="" className="main__right-cardAnime">
-                  52
-                </a>
-                <a href="" className="main__right-cardAnime">
-                  52
-                </a>
-                <a href="" className="main__right-cardAnime">
-                  52
-                </a>
-                <a href="" className="main__right-cardAnime">
-                  52
-                </a>
-                <a href="" className="main__right-cardAnime">
-                  52
-                </a>
-                <a href="" className="main__right-cardAnime">
-                  52
-                </a>
-  
-                
-            </div>
-          {/* </div> */}
+          <Suspense fallback={<div>...loading</div>}>
+            <Await resolve={data.titlesResponse}
+                    errorElement={<p>Error loading posts!</p>}
+            >
+                {(titlesPromise) => <Cards items={titlesPromise.data}/>}
+            </Await>
+          </Suspense>
+          
         </div>
       </main>
       </section>
