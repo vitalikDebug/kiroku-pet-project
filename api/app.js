@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import jikanRoute from "./routes/jikan.route.js"
 import anilibriaRoute from './routes/anilibria.route.js'
+import mangadexRoute from "./routes/mangadex.route.js"
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ console.log(process.env.CLIENT_URL) // undefined
 
 app.use("/api", jikanRoute)
 app.use("/api", anilibriaRoute)
+app.use("/api", mangadexRoute)
 // app.use("/api")
 
 app.listen(4444, () => {

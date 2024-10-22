@@ -1,0 +1,75 @@
+@use "../../assets/styles/variables";
+@use "../../assets/styles/mixins";
+
+.mangaList {
+    width: 1300px;
+    margin: 0 auto;
+    h2 {
+        font-weight: 700;
+        font-family: variables.$font-IBM;
+        font-size: 30px;
+        color: variables.$test-color;
+        margin: 8px 0;
+    }
+
+    .mangaList__cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        .mangaList__cardManga {
+            text-decoration: none;
+            color: variables.$test-color;
+            font-family: variables.$font-Inter;
+            min-width: 350px;
+            height: 200px;
+            position: relative;
+            display: inline-flex;
+            padding: 8px;
+            align-items: flex-start;
+            gap: 16px;
+            background: linear-gradient(#121419, #121419) padding-box,
+                linear-gradient(to left,
+                    rgba(24, 71, 177, 0.2),
+                    rgba(161, 196, 247, 0.2)) border-box;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            transition: all 0.25 ease;
+
+            .cardManga__cover {
+                .cardManga__cover-img {
+                    width: 140px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                    user-select: none;
+                }
+            }
+            .cardManga__body {
+                display: flex;
+                max-width: 200px;
+                flex-direction: column;
+                align-content: flex-end;
+                gap: 8px;
+                z-index: 1;
+                .cardManga__body-cheap{
+
+                }
+                .cardManga__body-chapters{
+
+                }
+                .cardManga__body-title{
+                    display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              align-self: stretch;
+              overflow: hidden;
+              color: variables.$test-color;
+              text-overflow: ellipsis;
+              margin: 10px 0;
+              max-width: 180px;
+              line-height: 1.25;
+                }
+            }
+        }
+    }
+}

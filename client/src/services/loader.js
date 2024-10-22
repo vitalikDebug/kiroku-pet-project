@@ -9,3 +9,10 @@ export const titlesPageLoader = async ({ request, params }) => {
         titlesResponse: titlesPromise
     })
 }
+
+export const mangaPageLoader = async ({ request, params }) => {
+    const mangaPromise = await apiRequest(`mangadex/manga`)
+    return defer({
+        mangaResponse: mangaPromise
+    })
+}
