@@ -1,4 +1,4 @@
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, Link, useLoaderData } from "react-router-dom";
 import Cards from "../cards/cards";
 import NavBar from "../navBar/navBar";
 import { Suspense, useState } from "react";
@@ -26,7 +26,7 @@ const Header = () => {
               explore a community of fans who share your passion for Japanese
               culture.
             </p>
-            <a className="button button-start">
+            <Link to="/manga" className="button button-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -42,8 +42,8 @@ const Header = () => {
                 <path d="M17 7l-10 10"></path>
                 <path d="M16 17l-9 0l0 -9"></path>
               </svg>{" "}
-              Get Started
-            </a>
+              Manga
+            </Link>
           </div>
           <div className="main__right">
             <Suspense fallback={<div>...loading</div>}>

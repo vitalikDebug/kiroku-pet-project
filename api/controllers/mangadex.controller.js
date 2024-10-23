@@ -54,7 +54,7 @@ export const getMangaById = async (req, res) => {
 
 
 
-    const id = "b77e7a6a-a5e2-4fc6-b3c3-b152bd86239d"
+    const id = "0f237a5f-07ad-4e43-bbd9-2a320694434d"
 
     try {
         const response = await axios.get(`${baseUrl}/manga/${id}`)
