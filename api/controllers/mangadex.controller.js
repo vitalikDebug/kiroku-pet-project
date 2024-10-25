@@ -1,12 +1,18 @@
 import axios from "axios"
+import axiosRetry from "axios-retry"
 
 const baseUrl = "https://api.mangadex.org"
 const coverUrl = "https://api.mangadex.org/cover"
 
 export const getAllManga = async (req, res) => {
+
+    console.log(`Requesting URL: ${baseUrl}/manga?limit=50`);
+
+    axiosRetry(axios, { retries: 3 })
+
     try {
         const response = await axios.get(`${baseUrl}/manga?limit=50`, {
-            timeout: 10000
+            timeout: 15000
         })
 
         const relationshipsFilter = ({ relationships }) => {
@@ -51,20 +57,47 @@ export const getAllManga = async (req, res) => {
 }
 
 export const getMangaById = async (req, res) => {
-
-
-
-    const id = "0f237a5f-07ad-4e43-bbd9-2a320694434d"
+    const { id } = req.params
+    console.log(id)
 
     try {
         const response = await axios.get(`${baseUrl}/manga/${id}`)
-        console.log(response)
+
+
+        const relationshipsFilter = ({ relationships }) => {
+            const cover = relationships.find(item => item.type === 'cover_art')
+            return cover ? cover.id : null
+        }
+
+        const { relationships, ...rest } = response.data.data
+        const filterData = { ...rest, coverId: relationshipsFilter(response.data.data) }
+        // console.log("filterData", filterData)
+        if (filterData.coverId) {
+            try {
+                const coverResponse = await axios.get(`${coverUrl}/${filterData.coverId}`);
+                const fileName = coverResponse.data.data.attributes.fileName;
+                console.log(fileName)
+                const mangaWithCover = {
+                    ...filterData,
+                    coverUrl: `https://uploads.mangadex.org/covers/${filterData.id}/${fileName}`
+                };
+                console.log(mangaWithCover)
+                res.json(mangaWithCover);
+            } catch (coverError) {
+                console.log("Error fetching cover data:", coverError);
+                res.status(500).json({ error: "Failed to fetch cover data" });
+            }
+        } else {
+
+            res.json(filterData);
+        }
 
 
 
-        res.json(response.data.data)
+
+        // res.json(response.data.data)
     } catch (error) {
-
+        console.log(error)
     }
 }
 
@@ -101,10 +134,6 @@ export const getMangaFeed = async (req, res) => {
     catch (error) {
         console.log(error)
     }
-
-}
-
-export const getMangaCover = async (req, res) => {
 
 }
 

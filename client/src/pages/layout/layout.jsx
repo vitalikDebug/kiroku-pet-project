@@ -3,11 +3,11 @@ import NavBar from "../../components/navBar/navBar";
 
 function Layout() {
     return (
-        <div className="layout">
+        <div>
             <div>
                 <NavBar/>
             </div>
-            <div className="content"> 
+            <div> 
                 <Outlet/>
             </div>
         </div>
