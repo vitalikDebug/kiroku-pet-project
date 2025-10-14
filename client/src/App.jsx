@@ -3,10 +3,11 @@ import NavBar from './components/navBar/navBar'
 import "./assets/styles/main.scss"
 import Header from './components/header/header'
 import { Children } from 'react'
-import { mangaPageLoader, titlesPageLoader } from './services/loader'
+import { mangaByIdPageLoader, mangaPageLoader, titlesPageLoader } from './services/loader'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Manga from './pages/manga'
 import { Layout } from './pages/layout/layout'
+import MangaFullDesc from './pages/mangaById'
 
 
 function App() {
@@ -25,6 +26,11 @@ function App() {
           path: '/manga',
           element: <Manga/>,
           loader: mangaPageLoader
+        },
+        {
+          path: '/manga/:id',
+          element: <MangaFullDesc/>,
+          loader: mangaByIdPageLoader
         }
       ]
     }

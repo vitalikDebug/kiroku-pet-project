@@ -144,19 +144,21 @@
 
     .mangaList__right {
       .position-sticky {
-position: sticky;
-      top: 0;
-            }
+        position: sticky;
+        top: 0;
+      }
+
       .mangaList__right-filter {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-                
+
         .search {
           display: flex;
           align-items: center;
           position: relative;
           width: 375px;
+          margin-right: 10px;
           .search-input {
             background-color: transparent;
             border: 1px solid #3c4558;
@@ -192,128 +194,238 @@ position: sticky;
           justify-content: center;
           z-index: 2;
           transition: transform 0.3s ease;
-          
+
         }
+
         .filter:hover {
-            transform: scale(1.05);
-          }
+          transform: scale(1.05);
+        }
       }
 
 
-      .mangaList__description {
-        max-width: 425px;
-        max-height: 20px;
-        background: linear-gradient(#121419, #121419) padding-box,
-          linear-gradient(to left,
-            rgba(24, 71, 177, 0.2),
-            rgba(161, 196, 247, 0.2)) border-box;
-        color: variables.$test-color;
-        border-radius: 10px;
-        border: 1px solid transparent;
-        // text-align: right;
-        font-family: variables.$font-Inter;
-        padding: 15px;
-        transition: max-height 0.5s ease-out;
+      .mangaList__right-bar {
+        .mangaList__description {
+          max-width: 425px;
+          max-height: 20px;
+          background: linear-gradient(#121419, #121419) padding-box,
+            linear-gradient(to left,
+              rgba(24, 71, 177, 0.2),
+              rgba(161, 196, 247, 0.2)) border-box;
+          color: variables.$test-color;
+          border-radius: 10px;
+          border: 1px solid transparent;
+          // text-align: right;
+          font-family: variables.$font-Inter;
+          padding: 15px;
+          transition: max-height 0.5s ease-out;
 
-        .mangaList__description-card {
-          .card__header {
-            display: flex;
-            justify-content: space-between;
-
-            // padding-bottom: 20px;
-            .card__header-img {
-              img {
-                width: 150px;
-                height: 200px;
-                // object-fit: cover;
-                border-radius: 10px;
-              }
-            }
-
-            .card__header-right {
-              width: 220px;
+          .mangaList__description-card {
+            .card__header {
               display: flex;
-              flex-direction: column;
-              gap: 16px;
+              justify-content: space-between;
 
-              .card__header-status {
-                border: 1px solid #3c4558;
-                padding: 8px;
-                font-size: 12px;
-                width: 100px;
-                text-align: center;
-                border-radius: 10px;
-                align-self: flex-end;
+              // padding-bottom: 20px;
+              .card__header-img {
+                img {
+                  width: 150px;
+                  height: 200px;
+                  // object-fit: cover;
+                  border-radius: 10px;
+                }
               }
 
-              .card__header-title {
-                align-self: flex-start;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-height: 40px;
-              }
-
-              .card__header-genres {
+              .card__header-right {
+                width: 220px;
                 display: flex;
-                flex-wrap: wrap;
-                gap: 4px;
-                max-height: 80px;
-                overflow: hidden;
+                flex-direction: column;
+                gap: 16px;
 
-                .card__header-genre {
-                  display: inline-flex;
-                  justify-content: center;
-                  align-items: center;
-                  color: variables.$test-color;
-                  max-width: 200px;
-                  font-size: 12px;
-                  max-height: 29px;
-                  background-color: #1f2635;
-                  gap: 4px;
+                .card__header-status {
+                  border: 1px solid #3c4558;
                   padding: 8px;
-                  border-radius: 8px;
+                  font-size: 12px;
+                  width: 100px;
+                  text-align: center;
+                  border-radius: 10px;
+                  align-self: flex-end;
+                }
+
+                .card__header-title {
+                  align-self: flex-start;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  max-height: 40px;
+                }
+
+                .card__header-genres {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 4px;
+                  max-height: 80px;
+                  overflow: hidden;
+
+                  .card__header-genre {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: variables.$test-color;
+                    max-width: 200px;
+                    font-size: 12px;
+                    max-height: 29px;
+                    background-color: #1f2635;
+                    gap: 4px;
+                    padding: 8px;
+                    border-radius: 8px;
+                  }
                 }
               }
             }
+
+            .card__footer {
+              .card__footer-top {
+                border: 1px solid #3c4558;
+                padding: 8px;
+                font-size: 14px;
+                width: 100px;
+                text-align: center;
+                border-radius: 10px;
+              }
+
+              .card__footer-desc {
+                line-height: 1.45;
+                font-size: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                max-height: 180px;
+              }
+            }
           }
 
-          .card__footer {
-            .card__footer-top {
-              border: 1px solid #3c4558;
+          .mangaList__false {
+            animation: pulse 2.5s ease-in-out 3.5s infinite;
+          }
+
+          @keyframes pulse {
+            0% {
+              opacity: 1;
+            }
+
+            50% {
+              opacity: 0.4;
+            }
+
+            100% {
+              opacity: 1;
+            }
+          }
+        }
+
+        .mangaList__menu-button {
+          margin-top: 15px;
+
+          display: flex;
+          justify-content: space-between;
+            .mangaList__left-button {
+              display: flex;
+             
+              .mangaList__button-read {
+                border: 1px solid #3c4558;
+                background-color: transparent;
+                padding: 8px;
+                font-size: 14px;
+                width: 80px;
+                text-align: center;
+                border-radius: 10px;
+                color: variables.$test-color;
+                // font-family: variables.$font-IBM;
+                font-family: variables.$font-Inter;
+                margin-right: 5px;
+                // text-transform: uppercase;
+                &:hover {
+                  color: rgba(219, 230, 255, 0.5);
+                }
+              }
+
+              .dropdown {
+                position: relative;
+                display: inline-block;
+                font-family: Arial, sans-serif;
+
+                &__button {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  max-width: 80px;
+                  min-width: 60px;
+                  padding: 8px;
+                  background-color: transparent;
+                  color: variables.$test-color;
+                  border: 1px solid #3c4558;
+                  border-radius: 10px;
+                  cursor: pointer;
+                  font-size: 16px;
+
+                  &:focus {
+                    outline: none;
+                  }
+                }
+
+                &__arrow {
+                  transition: transform 0.3s;
+                }
+
+                &__arrow.open {
+                  transform: rotate(180deg);
+                }
+
+                &__menu {
+                  position: absolute;
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  background-color: transparent;
+                  border: 1px solid #3c4558;
+                  border-radius: 10px;
+                  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+                  margin-top: 5px;
+                  z-index: 1;
+                }
+
+                &__item {
+                  padding: 10px;
+                  color: #ffffff;
+                  cursor: pointer;
+
+                  &:hover {
+
+                    color: rgba(219, 230, 255, 0.5);
+                  }
+                }
+              }
+             
+            }
+            .mangaList__button-full {
+              // border: 1px solid #3c4558;
+              background-color: #1f2635;
               padding: 8px;
               font-size: 14px;
-              width: 100px;
+              width: 150px;
               text-align: center;
               border-radius: 10px;
+              color: variables.$test-color;
+              font-family: variables.$font-Inter;
+              margin-right: 5px;
+              transition: transform 0.3s ease;
+              border: none;
+              text-decoration: none;
+              // cursor: pointer;
+              // text-transform: uppercase;
+              &:hover {
+                // color: rgba(219, 230, 255, 0.8);
+                transform: scale(1.05);
+              }
             }
-
-            .card__footer-desc {
-              line-height: 1.45;
-              font-size: 14px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              width: 100%;
-              height: 180px;
-            }
-          }
-        }
-
-        .mangaList__false {
-          animation: pulse 2.5s ease-in-out 3.5s infinite;
-        }
-
-        @keyframes pulse {
-          0% {
-            opacity: 1;
-          }
-
-          50% {
-            opacity: 0.4;
-          }
-
-          100% {
-            opacity: 1;
-          }
         }
       }
 

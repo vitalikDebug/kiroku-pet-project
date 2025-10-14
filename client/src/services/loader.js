@@ -16,3 +16,11 @@ export const mangaPageLoader = async ({ request, params }) => {
         mangaResponse: mangaPromise
     })
 }
+
+export const mangaByIdPageLoader = async ({ request, params }) => {
+    const { id } = params
+    const mangaByIdPromise = await apiRequest(`mangadex/manga/${id}`)
+    return defer({
+        mangaByIdResponse: mangaByIdPromise
+    })
+}

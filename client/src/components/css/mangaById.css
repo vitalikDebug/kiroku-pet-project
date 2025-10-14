@@ -1,0 +1,39 @@
+.mangaById {
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+}
+.mangaById .mangaById__background {
+  display: flex;
+  width: calc(100% + 250px);
+  height: 450px;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  overflow-y: visible;
+  transform: translate(-200px);
+  z-index: 3;
+}
+.mangaById .mangaById__background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 250px);
+  height: 450px;
+  background-color: rgba(18, 20, 25, 0.8);
+  z-index: 2;
+}
+.mangaById .mangaById__background img {
+  width: 250px;
+  height: 450px;
+  transform: skew(-20deg);
+  object-fit: cover;
+  z-index: 1;
+  filter: blur(1px);
+}
+.mangaById .mangaById__desc {
+  position: relative;
+  z-index: 4;
+}/*# sourceMappingURL=mangaById.css.map */
