@@ -9,43 +9,36 @@ dotenv.config()
 
 const app = express()
 
-const allowedOrigins = [
-    'http://localhost:5173',
-    'http://localhost:3000',
-    'https://kiroku-pet-project.vercel.app',
-    'https://kiroku-pet-project-*.vercel.app'
-].filter(Boolean)
 
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
-
-        if (allowedOrigins.some(allowedOrigin => {
-
-            if (allowedOrigin.includes('*')) {
-                const pattern = new RegExp(allowedOrigin.replace('*', '.*'));
-                return pattern.test(origin);
-            }
-            return allowedOrigin === origin;
-        })) {
-            callback(null, true);
-        } else {
-            console.log('CORS blocked for origin:', origin);
-            callback(null, false);
-        }
-    },
+    origin: "*",
     credentials: true
 }));
 
-console.log(process.env.CLIENT_URL)
+
+app.use(cors({
+    origin: [
+        "https://kiroku-pet-project.vercel.app",
+        "https://kiroku-pet-project-*.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000"
+    ],
+    credentials: true
+}));
+
+app.use(express.json());
 
 app.use("/api", jikanRoute)
 app.use("/api", anilibriaRoute)
 app.use("/api", mangadexRoute)
-// app.use("/api")
+
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK", message: "API is running" });
+});
 
 const PORT = process.env.PORT || 4444;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
+    console.log('CORS enabled for all origins')
 })
