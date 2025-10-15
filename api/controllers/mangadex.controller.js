@@ -4,6 +4,10 @@ import axiosRetry from "axios-retry"
 const baseUrl = "https://api.mangadex.org"
 const coverUrl = "https://api.mangadex.org/cover"
 
+const baseUrlEnv = process.env.API_MANGADEX
+
+console.log(baseUrlEnv)
+
 export const getAllManga = async (req, res) => {
 
     axiosRetry(axios, { retries: 3 })
