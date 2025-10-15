@@ -1,10 +1,21 @@
 import axios from "axios"
 
+const API_BASE_URL = "https://kiroku-pet-project.vercel.app/"
+
 const apiRequest = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "http://localhost:4444/api/",
+    baseURL: API_BASE_URL,
     withCredentials: true
 })
 
-console.log('API Base URL:', import.meta.env.VITE_API_URL)
+apiRequest.interceptors.request.use(
+    (config) => {
+        console.log('Making API request to:', config.url)
+        return config
+    },
+    (error) => {
+        console.error('API request error:', error)
+        return Promise.reject(error)
+    }
+)
 
 export default apiRequest;
