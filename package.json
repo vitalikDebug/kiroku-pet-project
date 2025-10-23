@@ -1,15 +1,19 @@
 {
-  "name": "kiroku-app",
+  "name": "kiroku-fullstack",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev:client": "cd client && npm run dev",
-    "dev:server": "cd api && npm run dev", 
+    "dev:server": "cd api && npm run start",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "build": "cd client && npm run build",
-    "start": "cd api && npm start",
+    "start": "cd api && npm run start",
     "vercel-build": "npm run build"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.x"
   }
 }
