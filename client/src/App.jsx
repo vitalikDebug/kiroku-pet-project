@@ -3,11 +3,12 @@ import './App.css'
 import "./assets/styles/main.scss"
 import Header from './components/header/header'
 // import { Children } from 'react'
-import { mangaByIdPageLoader, mangaPageLoader, titlesPageLoader } from './services/loader'
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Manga from './pages/manga'
 import { Layout } from './pages/layout/layout'
 import MangaFullDesc from './pages/mangaById'
+import { mangaByIdPageLoader, mangaPageLoader, titlesPageLoader } from './services/loader'
 
 
 function App() {
